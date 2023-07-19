@@ -1,74 +1,56 @@
-import React, { useMemo } from 'react';
+import React, { forwardRef } from 'react';
+import type { AriaButtonProps } from 'react-aria';
+import { useButton } from 'react-aria';
+import { twMerge } from 'tailwind-merge';
+import { useObjectRef } from '@react-aria/utils';
+import clsx from 'clsx';
 
-type ButtonType = 'primary' | 'secondary';
-type ButtonSize = 'small' | 'medium' | 'large';
-
-export interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  type?: ButtonType;
-  /**
-   * How large should the button be?
-   */
-  size?: ButtonSize;
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+export interface ButtonProps extends AriaButtonProps {
+  className?: string;
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
 }
 
-const BASE_BUTTON_CLASSES =
-  'cursor-pointer rounded-full border-2 font-bold leading-none inline-block';
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const buttonRef = useObjectRef(ref);
+  const { buttonProps } = useButton(props, buttonRef);
+  const { children, className, variant = 'primary', size = 'small' } = props;
 
-const getSizeClasses = (size: ButtonSize) => {
-  switch (size) {
-    case 'small': {
-      return 'px-4 py-2.5';
+  const defaultClassName = clsx(`flex 
+    justify-center 
+    rounded-md 
+    ${size === 'small' ? 'px-5 py-2' : ''}
+    ${size === 'medium' ? 'px-8 py-3' : ''}
+    ${size === 'large' ? 'px-9 py-4' : ''}
+    w-full 
+    text-sm 
+    font-semibold 
+    transition
+    ${
+      variant === null || variant === 'primary'
+        ? 'bg-sky-500 hover:bg-sky-600 text-white'
+        : 'border-2 border-gray-600 dark:border-gray-600'
     }
-    case 'large': {
-      return 'px-6 py-3';
-    }
-    default: {
-      return 'px-5 py-2.5';
-    }
-  }
-};
-
-const getModeClasses = (type: ButtonType) =>
-  type === 'primary'
-    ? 'text-white bg-pink-600 border-pink-600 dark:bg-pink-700 dark:border-pink-700'
-    : 'text-slate-700 bg-transparent border-slate-700 dark:text-white dark:border-white';
-
-/**
- * Primary UI component for user interaction
- */
-const Button: React.FC<ButtonProps> = ({
-  type = 'primary',
-  size = 'medium',
-  label,
-  onClick,
-}) => {
-  const computedClasses = useMemo(() => {
-    const modeClass = getModeClasses(type);
-    const sizeClass = getSizeClasses(size);
-
-    return [modeClass, sizeClass].join(' ');
-  }, [type, size]);
+    disabled:opacity-70 
+    disabled:cursor-not-allowed  
+    hover:scale-105
+    focus-visible:outline-sky-600`);
 
   return (
     <button
-      type='button'
-      className={`${BASE_BUTTON_CLASSES} ${computedClasses}`}
-      onClick={onClick}
+      {...buttonProps}
+      ref={buttonRef}
+      className={
+        className !== ''
+          ? twMerge(defaultClassName, className)
+          : defaultClassName
+      }
     >
-      {label}
+      {children}
     </button>
   );
-};
+});
+
+Button.displayName = 'Button';
 
 export default Button;

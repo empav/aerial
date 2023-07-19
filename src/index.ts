@@ -1,5 +1,6 @@
 import './tailwind.css';
 
 import Button from './components/Button';
+import TextField from './components/TextField';
 
-export { Button };
+export { Button, TextField };
