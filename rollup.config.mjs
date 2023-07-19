@@ -34,6 +34,10 @@ export default [
       typescript(),
       postcss({
         extensions: ['.css'],
+        minimize: true,
+        inject: {
+          insertAt: 'top',
+        },
       }),
     ],
   },
