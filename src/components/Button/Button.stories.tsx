@@ -16,7 +16,8 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Click me',
+    children: 'Click me 😄',
+    size: 'large',
   },
 };
 
@@ -24,5 +25,15 @@ export const Secondary: Story = {
   args: {
     variant: 'secondary',
     children: 'Click me',
+    size: 'medium',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    variant: 'secondary',
+    children: "Can't click 😅",
+    size: 'small',
+    isDisabled: true,
   },
 };
