@@ -5,12 +5,14 @@ import { useOverlayTriggerState } from 'react-stately';
 import Button from '../Button';
 import React from 'react';
 import Popover from './Popover';
+import type { PositionProps } from '@react-types/overlays';
 
 export interface PopoverTriggerProps extends OverlayTriggerProps {
   children: React.ReactElement;
   label: string;
   className?: string;
   popoverRef?: React.RefObject<HTMLDivElement>;
+  position?: PositionProps;
 }
 
 export default function PopoverTrigger(props: PopoverTriggerProps) {
@@ -28,7 +30,13 @@ export default function PopoverTrigger(props: PopoverTriggerProps) {
         {props.label}
       </Button>
       {state.isOpen && (
-        <Popover {...props} triggerRef={ref} state={state}>
+        <Popover
+          {...props}
+          triggerRef={ref}
+          popoverRef={props.popoverRef}
+          state={state}
+          {...props.position}
+        >
           {React.cloneElement(props.children, overlayProps)}
         </Popover>
       )}

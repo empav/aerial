@@ -12,10 +12,25 @@ export default meta;
 
 type Story = StoryObj<typeof PopoverTrigger>;
 
-export const Trigger: Story = {
+export const AtTheBottom: Story = {
   render: (args) => (
-    <PopoverTrigger label='Open Popover'>
-      <span>ciao</span>
+    <PopoverTrigger
+      {...args}
+      label='Open Popover'
+      position={{ placement: 'bottom' }}
+    >
+      <div className='px-6 py-2'>Hi there!</div>
+    </PopoverTrigger>
+  ),
+};
+export const AtTheTop: Story = {
+  render: (args) => (
+    <PopoverTrigger
+      {...args}
+      label='Open Popover'
+      position={{ placement: 'top', offset: 10 }}
+    >
+      <div className='px-6 py-2'>Hi there!</div>
     </PopoverTrigger>
   ),
 };
