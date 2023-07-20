@@ -23,10 +23,17 @@ export const Email: Story = {
   },
 };
 
+export const Placeholder: Story = {
+  args: {
+    placeholder: 'Password',
+    type: 'password',
+  },
+};
+
 export const Disabled: Story = {
   args: {
-    label: 'Email',
-    type: 'email',
+    label: "I'm disabled",
+    type: 'text',
     isDisabled: true,
   },
 };
