@@ -12,6 +12,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     coverage: {
+      include: ['src/components'],
+      exclude: ['src/**/index.ts', 'src/**/*.stories.tsx'],
+      all: true,
       reporter: ['text', 'json', 'html'],
     },
   },
