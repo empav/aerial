@@ -4,6 +4,10 @@ Congrats! You just saved yourself hours of work by bootstrapping this project. L
 
 > If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
 
+## Active status
+
+![Workflow](https://github.com/empav/aerial/actions/workflows/CI.yml/badge.svg)
+
 ## Commands
 
 The recommended workflow is to build it:
