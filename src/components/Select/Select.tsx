@@ -12,7 +12,7 @@ import {
 import { Popover } from '../Popover';
 
 import { HiSelector } from 'react-icons/hi';
-import { ListBox } from './ListBox';
+import ListBox from '../ListBox';
 
 export { Item as SelectItem } from 'react-stately';
 

@@ -6,7 +6,7 @@ import type { Node } from '@react-types/shared';
 import { useListBox, useListBoxSection, useOption } from 'react-aria';
 import { AiOutlineCheck } from 'react-icons/ai';
 
-interface ListBoxProps extends AriaListBoxOptions<unknown> {
+export interface ListBoxProps extends AriaListBoxOptions<unknown> {
   listBoxRef?: React.RefObject<HTMLUListElement>;
   state: ListState<unknown>;
 }
@@ -21,7 +21,7 @@ interface OptionProps {
   state: ListState<unknown>;
 }
 
-export function ListBox(props: ListBoxProps) {
+export default function ListBox(props: ListBoxProps) {
   const ref = React.useRef<HTMLUListElement>(null);
   const { listBoxRef = ref, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
