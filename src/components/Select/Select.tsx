@@ -52,6 +52,7 @@ export default function Select<T extends object>(props: SelectProps<T>) {
       <button
         {...mergeProps(buttonProps, focusProps)}
         ref={ref}
+        data-testid='select-btn'
         className={`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border-2 outline-none ${
           isFocusVisible ? 'border-sky-500' : 'border-gray-300'
         } ${state.isOpen ? 'bg-gray-100' : 'bg-white'}`}
