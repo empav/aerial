@@ -29,7 +29,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ${
       variant === null || variant === 'primary'
         ? 'bg-sky-500 hover:bg-sky-600 text-white'
-        : 'border-2 border-gray-600 dark:border-gray-600'
+        : 'border-2 border-gray-300'
     }
     disabled:opacity-70 
     disabled:cursor-not-allowed  

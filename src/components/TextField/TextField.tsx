@@ -18,7 +18,7 @@ const defaultClassName = `
             dark:text-gray-200 
             autofill:bg-black 
             border-2 
-            border-gray-600 
+            border-gray-300
             dark:focus:border-white 
             rounded-md 
             outline-none 
@@ -57,7 +57,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
           peer-focus:scale-75
           peer-focus:-translate-y-4
           peer-invalid:text-rose-500
-          text-zinc-400
+          text-zinc-500
         `)}
       >
         {props.label}
