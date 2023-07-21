@@ -1,6 +1,6 @@
 {
   "name": "@empav/aerial",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Aerial React UI components library",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
