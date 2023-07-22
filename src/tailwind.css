@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .fluid-container {
+    container-type: inline-size;
+  }
+
+  h1 {
+    --font-size: 1.65rem;
+    --font-size-fluid: 3cqi;
+  }
+  h2 {
+    --font-size: 1.45rem;
+    --font-size-fluid: 2.5cqi;
+  }
+  h3 {
+    --font-size: 1.25rem;
+    --font-size-fluid: 2cqi;
+  }
+  h4 {
+    --font-size: 0.75rem;
+    --font-size-fluid: 1.5cqi;
+  }
+
+  @supports (font-size: 1cqi) {
+    :is(h1, h2, h3, h4) {
+      --font-min: var(--font-size) - var(--font-size) * 0.4;
+      --font-max: var(--font-size) + var(--font-size) * 1.6;
+
+      font-size: clamp(
+        var(--font-min),
+        var(--font-size-fluid) + 1.5cqi,
+        var(--font-max)
+      );
+    }
+  }
+}
